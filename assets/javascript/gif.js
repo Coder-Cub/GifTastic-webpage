@@ -3,7 +3,7 @@
 $(document).ready(function () {
 
   // declare initial array of superheros
-  var superHeros = ['Wonderwoman', 'Spiderman', 'Green Lantern', 'Batman', 'Captain America', 'Lotho', 'Superman', 'The Flash']
+  var topics = ['Wonderwoman', 'Spiderman', 'Green Lantern', 'Batman', 'Captain America', 'Lotho', 'Superman', 'The Flash']
 
 
   // all functions
@@ -13,7 +13,7 @@ $(document).ready(function () {
   function displayHeros() {
     $("#hero-view").empty();
     var topic = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=pspmxFY6WisHmo9hRDqVG0ExuJLVuC82&q=" + superHeros + "&limit=10&offset=0&rating=PG&lang=en";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=pspmxFY6WisHmo9hRDqVG0ExuJLVuC82&q=" + topic + "&limit=10&offset=0&rating=PG&lang=en";
     
     // ajax call to get information
     $.ajax({
@@ -23,7 +23,7 @@ $(document).ready(function () {
     .then(function(response){
       if (response.pagination.total_count == 0) {
         alert("Sorry, we are all out of GIFs for this superhero today!");
-        var itemIndex = superHeros.indexOf(topic);
+        var itemIndex = topics.indexOf(topic);
         if (itemIndex > -1) {
           topic.splice(itemIndex, 1);
           renderButtons();
@@ -56,11 +56,11 @@ $(document).ready(function () {
   function renderButtons() {
     $(".buttons-view").empty();
 
-    for (var x = 0; x < superHeros.length; x++) {
+    for (var x = 0; x < topics.length; x++) {
       var makeButtons = $("<button>");
       makeButtons.addClass("topic btn btn-info");
-      makeButtons.attr("data-name", superHeros[x]);
-      makeButtons.text(superHeros[x]);
+      makeButtons.attr("data-name", topics[x]);
+      makeButtons.text(topics[x]);
       $(".buttons-view").append(makeButtons);
     }
   }
@@ -69,9 +69,9 @@ $(document).ready(function () {
   function removeButton () {
     $("#hero-view").empty();
     var topic = $(this).attr("data-name");
-    var itemIndex = superHeros.indexOf(topic);
+    var itemIndex = topics.indexOf(topic);
     if (itemIndex > -1) {
-      superHeros.splice(itemIndex, 1);
+      topics.splice(itemIndex, 1);
       renderButtons();
   }
 }
@@ -91,14 +91,21 @@ $("#add-hero").on("click", function(event){
 
   var hero = $("#input-hero").val().trim();
 
-  if  (superHeros.toString().toLocaleLowerCase().indexOf(hero.toLocaleLowerCase()) != -1) {
+  if  (topics.toString().toLocaleLowerCase().indexOf(hero.toLocaleLowerCase()) != -1) {
     alert("Hero already exists!");
   } else {
-    superHeros.push(hero);
+    topics.push(hero);
     renderButtons();
   }
-  console.log(hero)
-})
+});
+
+$(document).on("click", ".topic", displayHeros);
+
+$(document).on("click", ".animate-gif", playGif);
+
+$(document).on("dblclick", ".topic", removeButton);
+
+renderButtons();
 
 
-})
+});
