@@ -9,7 +9,8 @@ h1 {
     text-align: center;
     font-family: 'Bangers', cursive;
     font-size: 60px;
-    background-color: rgb(233, 134, 185);
+    background-color: #f7014e;
+    color: azure;
 }
 
 h3 {

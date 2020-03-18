@@ -44,9 +44,9 @@ $(document).ready(function () {
           gif.attr("data-state", 'still');
           gif.addClass('animate-gif');
           // Append info
-          newHeroDiv.append(gifRating);
           // newHeroDiv.append(gifTitle);
           newHeroDiv.append(gif);
+          newHeroDiv.append(gifRating);
           // Put saved info in new div
           $("#hero-view").prepend(newHeroDiv);
         }
