@@ -23,4 +23,4 @@ Repository link: https://github.com/JohnWP8253/GifTastic-webpage
 Github link: https://johnwp8253.github.io/GifTastic-webpage/
 
 ## Image of Website
-![Screenshot-of-page]("
+<img src="assets/images/site_shot.png"> 
