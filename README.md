@@ -19,8 +19,8 @@ Author: John Pendergrass
 • Codepen.com
 
 ## Important links
-Repository link: https://github.com/JohnWP8253/GifTastic-webpage
-Github link: https://johnwp8253.github.io/GifTastic-webpage/
+- Repository link: https://github.com/JohnWP8253/GifTastic-webpage
+- Github link: https://johnwp8253.github.io/GifTastic-webpage/
 
 ## Image of Website
 <img src="assets/images/site_shot.png"> 
