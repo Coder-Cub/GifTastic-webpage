@@ -2,11 +2,8 @@
 
 $(document).ready(function () {
 
-  // declare initial array of superheros
-  var topics = ['Wonderwoman', 'Spiderman', 'Green Lantern', 'Batman', 'Captain America', 'Ghost Rider', 'Superman', 'The Flash']
-
-
-  // all functions
+  // declare initial array of superheros through an array (put in at least 5 superheros)
+  var topics = []
 
 
   // function that displays info on all superherso by calling API and retrieving info
@@ -15,42 +12,24 @@ $(document).ready(function () {
     var topic = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=pspmxFY6WisHmo9hRDqVG0ExuJLVuC82&q=" + topic + "&limit=10&offset=0&rating=PG&lang=en";
 
-    // ajax call to get information
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    })
-      .then(function (response) {
-        if (response.pagination.total_count == 0) {
-          alert("Sorry, we are all out of GIFs for this superhero today!");
-          var itemIndex = topics.indexOf(topic);
-          if (itemIndex > -1) {
-            topic.splice(itemIndex, 1);
-            renderButtons();
-          }
-        }
+    //  Write your ajax call to get information from the giphy api
+    // Make sure and set an alert for if you don't find a superhero
+    
 
         // Save API response call (JSON) to a results variable
-        var results = response.data;
-        for (var i = 0; i < results.length; i++) {
-          var newHeroDiv = $("<div class='hero-name'>");
-          var gifRating = $("<p>").text("Rating: " + results[i].rating.toUpperCase());
-          // var gifTitle = $("<p>").text("Title: " + results[i].title.toUpperCase());
-          var gifURL = results[i].images.fixed_height_still.url;
-          var gif = $("<img>");
-          gif.attr("src", gifURL);
-          gif.attr("data-still", results[i].images.fixed_height_still.url);
-          gif.attr("data-animate", results[i].images.fixed_height.url);
-          gif.attr("data-state", 'still');
-          gif.addClass('animate-gif');
-          // Append info
-          // newHeroDiv.append(gifTitle);
-          newHeroDiv.append(gif);
-          newHeroDiv.append(gifRating);
-          // Put saved info in new div
-          $("#hero-view").prepend(newHeroDiv);
-        }
-      });
+
+        // create a variable to collect your results
+        // **********************************************************************************
+        // create a for loop to loop through the results with variables to show the following
+        // The hero's name (use jQuery to make an div with a class called hero-name)
+        // The gif's rating (use jQuery to make a p tag)
+        // The gif's URL 
+        // And finally, the gif itself (use jQuery to make an img tag)
+        // add attributes to pause and play the gifs
+        // append the gif and rating
+        // Prepend the variable to the hero-view class in the html
+        // **********************************************************************************
+        
   };
   // Function for making and displaying buttons
   function renderButtons() {
@@ -75,16 +54,18 @@ $(document).ready(function () {
       renderButtons();
     }
   }
-
+// **********************************************************************************
+// Create a function to set the differnt states of the gifs for animated or still
+// **********************************************************************************
   function playGif() {
-    var state = $(this).attr("data-state");
-    if (state === "still") {
-      $(this).attr("src", $(this).attr("data-animate"));
-      $(this).attr("data-state", "animate");
-    } else {
-      $(this).attr("src", $(this).attr("data-still"));
-      $(this).attr("data-state", "still");
-    }
+    // var state = $(this).attr("data-state");
+    // if (state === "still") {
+    //   $(this).attr("src", $(this).attr("data-animate"));
+    //   $(this).attr("data-state", "animate");
+    // } else {
+    //   $(this).attr("src", $(this).attr("data-still"));
+    //   $(this).attr("data-state", "still");
+    // }
   }
   $("#add-hero").on("click", function (event) {
     event.preventDefault();

@@ -1,5 +1,5 @@
 # GifTastic-webpage
-Assignment 6 using the GIPHY API
+Giphy API using JSON and Ajax calls to post data to a page
 
 ## Instructions
 1. Write a superhero name in the form element
@@ -10,17 +10,10 @@ Assignment 6 using the GIPHY API
 ## Author and Acknowledgement
 Author: John Pendergrass
 
-#### Colaborated with:
-1. Amy Hearr
-2. Chelseay Masood
-
 ## Works cited
 • W3Schools.com
 • Codepen.com
 
-## Important links
-- Repository link: https://github.com/JohnWP8253/GifTastic-webpage
-- Github link: https://johnwp8253.github.io/GifTastic-webpage/
 
 ## Image of Website
 <img src="assets/images/site_shot.png"> 
